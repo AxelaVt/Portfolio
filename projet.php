@@ -29,25 +29,28 @@ foreach ($data as $row) {
      // echo "</br>" . $row['lien_projet'];
 
 ?>
-<div class="container-fluid">
-  <div class="row col-lg-12 h-100">
-    <div class="d-flex w-50 h-100">
-      <h2 class="d-flex h-20"><?php echo $row['titre_projet']?></h2>
-      <div class="d-flex h-60">
+
+<div class="container-fluid projet h-100 p-10">
+  <div class="row col-lg-12 w-auto h-100 border">
+    <div class="d-flex flex-column w-50">
+      <h2 class="d-flex h-20 p-5"><?php echo $row['titre_projet']?></h2>
+      <div class="d-flex h-60 border p-5">
         <?php echo $row['descriptif_projet']?>
       </div>
-      <div class="d-flex h-20">
-        <?php echo $row['lien_projet']?>
+      <div class="d-flex h-10 p-5 ">
+        <a href="#<?php echo $row['lien_projet']?>"><button type="button" class="btn btn-outline-dark" name="lien_projet">demo</button></a>
+      </div>
+      <div class="d-flex h-10 p-5">
+        <button type="button" value="Annuler" onclick="history.back()" class="btn btn-outline-dark">Retour à la liste des projets</button>
       </div>
     </div>
-    <div class="d-flex w-50 h100">
-      <img src="img/"<?php echo $row['img_projet']?>".png" alt="image">
+    <div class="d-flex w-50 p-5">
+      <?php echo $row['img_projet']?>
+      <!-- <img class="image-projet w-auto h-50" src="img/<?php echo $row['img_projet']?>.png" alt="image"> -->
     </div>
   </div>
 </div>
 <?php } ?>
-
-
 
 <?php
 include "footer.php";

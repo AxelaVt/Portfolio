@@ -1,5 +1,4 @@
 
-
 <?php
 include "connection.php";
 include "header.php";
@@ -21,7 +20,7 @@ include "header.php";
   }
 ?>
 
-<div class="container h-50 m-2 mx-0 ">
+<div class="container m-2 mx-0 ">
   <form action="" method="post">
     <div class="form-group">
     <label for="titre">Titre:</label>
@@ -43,6 +42,10 @@ include "header.php";
 if(!empty($_POST)){
   header('Location:apropos.php');
 }
+?>
+<script>CKEDITOR.replace( 'editor1' );</script>
+<script>CKEDITOR.replace( 'editor2' );</script>
 
-include "footer.php";
+<?php
+include "footeradmin.php";
 ?>

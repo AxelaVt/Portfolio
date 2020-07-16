@@ -23,12 +23,12 @@ if ($executeIsOk == true) {
   <div class="jumbotron p-0">
     <input style="display:none" onClick="window.close()"/><a href="portefolio.php"><img class="float-sm-right p-1" src="bootstrap-icons/x-circle-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
     <div class="row h-40 p-4">
-      <div class="column w-100 border">
+      <div class="column w-100">
         <div class="row h-20">
           <h2 class="mx-4">A propos</h2><img src="bootstrap-icons/info-square.svg" alt="close" width="32" height="32" title="Bootstrap">
         </div>
-        <div class="row border">
-          <div class="col-lg-4 col-sm-12 p-2 text-center align-self-center border">
+        <div class="row">
+          <div class="col-lg-4 col-sm-12 p-2 text-center align-self-center">
             <img src="img/photo.png" >
           </div>
           <?php
@@ -37,7 +37,7 @@ if ($executeIsOk == true) {
               // echo "</br>" . $row['titre'];
               // echo "</br>" . $row['texte'];
             ?>
-          <div class="col-lg-8 col-sm-12 p-2 border">
+          <div class="col-lg-8 col-sm-12 p-2">
             <div class="column h-100 align-items-center">
               <h4 class="d-flex h-20"><?php echo $row['titre'] ?></h4>
               <p class="d-flex h-70"><?php echo $row['texte'] ?></p>
@@ -73,19 +73,10 @@ if ($executeIsOk == true) {
         </div>
       </div>
     </div>
-    <div class="d-flex flex-row h-10 align-items-end">
-      <div class="col-lg-4 m-4 modif">
-        <!-- lien pour modifier  -->
-        <a href="formapropos.php">modifier</a>
-      </div>
-      <div class="col-lg-4 m-4 connect">
-      <a href="connection.php">se connecter</a>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <?php
 include "footer.php";
 
  ?>
+</div>

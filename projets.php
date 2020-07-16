@@ -43,18 +43,7 @@ include "header.php";
           </div>
         </div>
       <!-- </div> -->
-      <div class="d-flex flex-row h-10 align-items-end">
-        <div class="col-lg-4 m-4 modif">
-          <!-- lien pour modifier  -->
-          <a href="formprojet.php">modifier</a>
-        </div>
-        <div class="col-lg-4 m-4 connect">
-        <a href="connection.php">se connecter</a>
-        </div>
-      </div>
-
-
-
+      
 
     <?php
     include "footer.php";

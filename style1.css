@@ -5,7 +5,20 @@
     font-weight: bold;
     font-style: normal;
 }
+/* all */
 
+footer{
+  position: absolute;
+  bottom:0;
+
+}
+
+/* admin */
+
+div.container.admin{
+  height: 100vh;
+  background-color: #f9f2f2;
+}
 
 /* menu */
 .bl-main {
@@ -20,8 +33,6 @@
 	width: 50%;
 	height: 50%;
 }
-
-
 
 
 /* about */
@@ -134,7 +145,7 @@ a{
   text-decoration: none;
 }
 
-a:hover{
+a.link:hover{
   font-size: 2.2rem;
 }
 
@@ -153,11 +164,8 @@ a:hover{
   opacity: 0.8;
 }
 
-a {
 
-}
-
-/* page projet */
+/* page tous les projets */
 
 .container-fluid.projets{
   height: 100vh;
@@ -180,7 +188,6 @@ img.card-img-top{
   height: 100%;
 }
 
-
 p.card-text,
 h4.card-title{
   margin-top:3rem;
@@ -188,4 +195,24 @@ h4.card-title{
 }
 .card-deck{
   height:40%;
+}
+
+/* page détail des projets */
+
+.container-fluid.projet{
+  max-height: 100vh;
+  background-color: #D30420;
+  /* opacity: 0.8; */
+}
+
+.image-projet{
+max-height: 100%;
+
+}
+
+/* formulaire */
+
+#editor1,
+#editor3{
+  height:20%;
 }

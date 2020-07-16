@@ -1,12 +1,7 @@
 
 
 <footer class="container-fluid h-10 p-1">
-<div class="d-flex flex-row h-10 align-items-end">
-  <div class="col-lg-12 m-4 modif">
-    <!-- lien pour modifier  -->
-    <a class="float-sm-right p-2" href="admin.php">admin</a>
-  </div>
-</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>

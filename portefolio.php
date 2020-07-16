@@ -20,7 +20,7 @@
 				<!-- page a propos -->
 				<section class="propos">
 					<div class="bl-box">
-						<a href="apropos.php"><h2>A propos</h2></a>
+						<a class="link" href="apropos.php"><h2>A propos</h2></a>
             <img src="img/ete.jpg">
 					</div>
 				</section>
@@ -29,7 +29,7 @@
 				<section class="projet" id="bl-work-section">
 				<!-- <section class="projet"> -->
 					<div class="bl-box">
-						<a href="projets.php"><h2>Projets</h2></a>
+						<a class="link" href="projets.php"><h2>Projets</h2></a>
             <img src="img/printemp.jpg">
 					</div>
 				</section>
@@ -37,7 +37,7 @@
 				<!-- page article -->
 				<section class="article">
 					<div class="bl-box">
-						<a href="articles.php"><h2>Articles</h2></a>
+						<a class="link" href="articles.php"><h2>Articles</h2></a>
             <img src="img/automne.jpg">
 					</div>
 				</section>
@@ -45,7 +45,7 @@
 				<!-- page contact -->
 				<section class="contact">
 					<div class="bl-box">
-						<a href="contact.php"><h2>Contact</h2></a>
+						<a class="link" href="contact.php"><h2>Contact</h2></a>
             <img src="img/hiver.jpg">
 					</div>
 				</section>
