@@ -10,7 +10,12 @@
 footer{
   position: absolute;
   bottom:0;
+  font-size: 2rem;
 
+}
+
+a.float-sm-right{
+  color:black;
 }
 
 /* admin */
@@ -18,20 +23,22 @@ footer{
 div.container.admin{
   height: 100vh;
   background-color: #f9f2f2;
+  font-size: 1.5rem;
+  color:black;
 }
 
 /* menu */
 .bl-main {
 	position: absolute;
-	width: 100%;
-	height: 100%;
+	width: 100vw;
+	height: 100vh;
 	overflow: hidden;
 }
 
 .bl-main > section {
 	position: absolute;
-	width: 50%;
-	height: 50%;
+	width: 50vw;
+	height: 50vh;
 }
 
 
@@ -145,7 +152,7 @@ a{
   text-decoration: none;
 }
 
-a.link:hover{
+.link:hover{
   font-size: 2.2rem;
 }
 
@@ -165,7 +172,7 @@ a.link:hover{
 }
 
 
-/* page tous les projets */
+/* page tous les projets projets.php */
 
 .container-fluid.projets{
   height: 100vh;
@@ -188,25 +195,37 @@ img.card-img-top{
   height: 100%;
 }
 
-p.card-text,
-h4.card-title{
+p.card-text.text-center,
+h4.card-title.text-center.pt-5{
   margin-top:3rem;
+  font-size: 3rem;
+  font-weight: 600;
   opacity: 1;
 }
 .card-deck{
   height:40%;
 }
 
-/* page détail des projets */
+/* page détail des projets projet.php */
 
 .container-fluid.projet{
-  max-height: 100vh;
-  background-color: #D30420;
-  /* opacity: 0.8; */
+  height: 100vh;
+  /*background-color: #D30420;*/
+  background-color: rgba(211, 4, 32, 0.6);
+
 }
 
 .image-projet{
-max-height: 100%;
+max-height: 100vh;
+
+}
+
+#description{
+  height: 60vh;
+  width: 50vw;
+  border-radius: 10px;
+  background-color: rgba(211, 4, 32, 0.2);
+  overflow: auto;
 
 }
 
@@ -215,4 +234,14 @@ max-height: 100%;
 #editor1,
 #editor3{
   height:20%;
+}
+
+/* modif des projets */
+
+td{
+  overflow: hidden;
+}
+
+tr{
+  height: 10vh;
 }

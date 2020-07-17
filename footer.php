@@ -1,10 +1,15 @@
 
 
-<footer class="container-fluid h-10 p-1">
-<div class="d-flex flex-row h-10 align-items-end">
-  <div class="col-lg-12 m-4 modif">
+<footer class="container-fluid w-100 h-10 m-0 p-0">
+<div class="d-flex flex-row p-4">
+  <div class="col-lg-8 modif">
     <!-- lien pour modifier  -->
-    <a class="float-sm-right p-2" href="admin.php">admin</a>
+    <p class="float-left"></p>
+  </div>
+
+  <div class="col-lg-4 pb-2 modif">
+    <!-- lien pour modifier -->
+    <a class="float-sm-right" href="admin.php">admin</a>
   </div>
 </div>
 

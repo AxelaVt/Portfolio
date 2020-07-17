@@ -33,12 +33,12 @@ include "header.php";
 //stocke en bdd les données saisies
 if (!empty($_POST['titre']) && !empty($_POST['descriptif']) && !empty($_POST['image']) && !empty($_POST['lien'])) {
   try {
-    $stmt = $conn->prepare('INSERT INTO projets(titre_projet,descriptif_projet,img_projet,lien_projet) VALUES (:titre,:descriptif,:image,:lien)');
+    $stmt = $conn->prepare('INSERT INTO projets(titre, descriptif, image, lien) VALUES (:titre, :descriptif, :image, :lien)');
     $executeIsOk = $stmt->execute(array(
-      ':titre_projet' => $_POST['titre'],
-      ':descriptif_projet' => $_POST['descriptif'],
-      ':img_projet' => $_POST['image'],
-      ':lien_projet' => $_POST['lien']
+    ':titre' => $_POST['titre'],
+    ':descriptif' => $_POST['descriptif'],
+    ':image' => $_POST['image'],
+    ':lien' => $_POST['lien']
     ));
 
     if ($executeIsOk == true) {
@@ -53,13 +53,14 @@ else {
   echo "Compléter les champs !";
 }
 
-// if (!empty($_POST)){
-//   header('Location:projets.php');
-// }
+if (!empty($_POST)){
+  header('Location:projets.php');
+}
 ?>
 <script>CKEDITOR.replace( 'editor3' );</script>
 <script>CKEDITOR.replace( 'editor4' );</script>
 <script>CKEDITOR.replace( 'editor5' );</script>
+
 <?php
 include "footeradmin.php";
 ?>

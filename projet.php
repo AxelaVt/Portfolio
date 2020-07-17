@@ -7,7 +7,7 @@ require ('connection.php');
 echo $_GET['id'];
 $id = $_GET['id'];
 //récup des données dans la base
-$sql = "SELECT * FROM projets WHERE id_projet = $id ";
+$sql = "SELECT * FROM projets WHERE id = $id ";
 $stmt = $conn->prepare($sql);
 // execute la requête
 $executeIsOk = $stmt->execute();
@@ -22,31 +22,48 @@ if ($executeIsOk == true) {
 // <!-- affichage des données -->
 foreach ($data as $row) {
     // affichage
-     // echo "</br>" . $row['id_projet'];
-     // echo "</br>" . $row['descriptif_projet'];
-     // echo "</br>" . $row['titre_projet'];
-     // echo "</br>" . $row['img_projet'];
-     // echo "</br>" . $row['lien_projet'];
+     // echo "</br>" . $row['id'];
+     // echo "</br>" . $row['descriptif'];
+     // echo "</br>" . $row['titre'];
+     // echo "</br>" . $row['image'];
+     // echo "</br>" . $row['lien'];
 
 ?>
 
 <div class="container-fluid projet h-100 p-10">
-  <div class="row col-lg-12 w-auto h-100 border">
-    <div class="d-flex flex-column w-50">
-      <h2 class="d-flex h-20 p-5"><?php echo $row['titre_projet']?></h2>
-      <div class="d-flex h-60 border p-5">
-        <?php echo $row['descriptif_projet']?>
+  <div class="row col-lg-12 w-auto m-0 p-0 border">
+    <div class="d-flex flex-column h-90 w-50">
+      <h2 class="d-flex h-20 p-2"><?php echo $row['titre']?></h2>
+      <div class="d-flex h-60 border p-5" id="description">
+        <?php echo $row['descriptif']?>
       </div>
-      <div class="d-flex h-10 p-5 ">
-        <a href="#<?php echo $row['lien_projet']?>"><button type="button" class="btn btn-outline-dark" name="lien_projet">demo</button></a>
+      <div class="d-flex h-10 p-2 ">
+        <a href="#<?php echo $row['lien']?>"><button type="button" class="btn btn-outline-light" name="lien">demo</button></a>
       </div>
-      <div class="d-flex h-10 p-5">
-        <button type="button" value="Annuler" onclick="history.back()" class="btn btn-outline-dark">Retour à la liste des projets</button>
+      <div class="d-flex h-10 p-2">
+        <a href="projets.php"><button type="button" class="btn btn-outline-light">Retour à la liste des projets</button></a>
+        <?php
+        // $pageactuelle = int;
+        // $pagesuivante;
+        // $pageprecedente;
+        // $pageactuelle;
+        $pageactuelle =  $id;
+         // var_dump($pageactuelle);
+
+        // if ($pageactuelle > 0) {
+          $pagesuivante = $id +1;
+          $pageprecedente = $id -1;
+        // }
+        // echo "cette page n'existe pas";
+
+        ?>
+        <a href="projet.php?id=<?php echo $pageprecedente ?>"><button type="button" value="" onclick="" class="btn btn-outline-light">projet précédent</button></a>
+        <a href="projet.php?id=<?php echo $pagesuivante ?>"><button type="button" value="" onclick="" class="btn btn-outline-light">projet suivant</button></a>
       </div>
     </div>
-    <div class="d-flex w-50 p-5">
-      <?php echo $row['img_projet']?>
-      <!-- <img class="image-projet w-auto h-50" src="img/<?php echo $row['img_projet']?>.png" alt="image"> -->
+    <div class="d-flex w-50 p-2 justify-content-center align-items-center">
+      <?php echo $row['image']?>
+      <!-- <img class="image-projet w-auto h-50" src="img/<?php// echo $row['image']?>.png" alt="image"> -->
     </div>
   </div>
 </div>

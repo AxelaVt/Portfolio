@@ -24,7 +24,7 @@ if ($executeIsOk == true) {
     <input style="display:none" onClick="window.close()"/><a href="portefolio.php"><img class="float-sm-right p-1" src="bootstrap-icons/x-circle-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
     <div class="row h-40 p-4">
       <div class="column w-100">
-        <div class="row h-20">
+        <div class="row h-20 align-items-center">
           <h2 class="mx-4">A propos</h2><img src="bootstrap-icons/info-square.svg" alt="close" width="32" height="32" title="Bootstrap">
         </div>
         <div class="row">

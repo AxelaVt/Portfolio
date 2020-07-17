@@ -11,6 +11,7 @@ include "header.php";
         ':titre' => $_POST['titre'],
         ':texte' => $_POST['comment']
       ));
+      
     } catch (\Exception $e) {
       echo $e->getMessage();
     }
