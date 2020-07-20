@@ -1,6 +1,5 @@
 <?php
 include "header.php";
-require ('connection.php');
 ?>
 
 <?php
@@ -43,22 +42,18 @@ foreach ($data as $row) {
       <div class="d-flex h-10 p-2">
         <a href="projets.php"><button type="button" class="btn btn-outline-light">Retour à la liste des projets</button></a>
         <?php
-        // $pageactuelle = int;
-        // $pagesuivante;
-        // $pageprecedente;
-        // $pageactuelle;
+        $nbpage = $_GET['page'];
+        $pagesuivante = $id +1;
+        $pageprecedente = $id -1;
         $pageactuelle =  $id;
-         // var_dump($pageactuelle);
-
-        // if ($pageactuelle > 0) {
-          $pagesuivante = $id +1;
-          $pageprecedente = $id -1;
-        // }
-        // echo "cette page n'existe pas";
+        if($pageactuelle == $nbpage+1 || $pageactuelle-1 === 0 ) {
+          $pageactuelle = $pageactuelle;
+          echo "cette page n'existe pas";
+         }
 
         ?>
-        <a href="projet.php?id=<?php echo $pageprecedente ?>"><button type="button" value="" onclick="" class="btn btn-outline-light">projet précédent</button></a>
-        <a href="projet.php?id=<?php echo $pagesuivante ?>"><button type="button" value="" onclick="" class="btn btn-outline-light">projet suivant</button></a>
+        <a href="projet.php?id=<?php echo $pageprecedente?>&page=<?php echo $nbpage?>"><button type="button" value="" onclick="" class="btn btn-outline-light">projet précédent</button></a>
+        <a href="projet.php?id=<?php echo $pagesuivante?>&page=<?php echo $nbpage?>"><button type="button" value="" onclick="" class="btn btn-outline-light">projet suivant</button></a>
       </div>
     </div>
     <div class="d-flex w-50 p-2 justify-content-center align-items-center">

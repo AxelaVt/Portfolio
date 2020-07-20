@@ -3,29 +3,23 @@
 include "header.php";
 
  ?>
- <div class="bl-content">
-   <div class="container">
+   <div class="container w-90 my-5">
      <div class="row">
+       <input style="display:none" onClick="window.close()"/><a href="portefolio.php"><img class="float-sm-right p-1" src="bootstrap-icons/x-circle-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
            <h2>Contact</h2>
          </div>
      </div>
-     <div class="row contentForm">
-         <div>
-           <div>
+     <div class="row p-5">
+           <div class="d-flex flex-column">
              <p>Téléphone: 06 61 30 37 06</p>
              <p>Réseaux sociaux:</p>
-             <div>
-                 <a href="https://github.com/AxelaVt"><img src="images/icons/github.jpg"></a>
-                 <a href="https://www.linkedin.com/in/avermenot/"><img src="images/icons/linkedin.jpg"></a>
+             <div class="d-flex flex-column">
+                 <a href="https://github.com/AxelaVt"><img src="img/icons/github.jpg"></a>
+                 <a href="https://www.linkedin.com/in/avermenot/"><img src="img/icons/linkedin.jpg"></a>
              </div>
            </div>
-           <div>
-             <img class="avion" src="images/icons/avion.png">
-           </div>
-
-         </div>
-         <div>
+         <div class="container">
              <form id="contact-form" class="form" action="#" method="POST" role="form">
                  <div class="form-group">
                      <label class="form-label" for="name">Nom</label>

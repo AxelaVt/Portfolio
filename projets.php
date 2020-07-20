@@ -1,16 +1,20 @@
 
 <?php
 include "header.php";
-include "connection.php";
  ?>
 
 <?php
 //récup de données dans la base
-$sql = "SELECT id, titre, image FROM projets ORDER BY id";
+$sql = "SELECT * FROM projets WHERE actif='oui' ORDER BY id";
+$sqlnb = "SELECT COUNT(*) FROM projets WHERE actif='oui'";
 $stmt = $conn->prepare($sql);
+$stmtnb = $conn->prepare($sqlnb);
 // execute la requête
 $executeIsOk = $stmt->execute();
-
+$executeIsOk = $stmtnb->execute();
+$nbprojets = $stmtnb->fetchAll();
+//var_dump($nbprojets);
+//echo $nbprojets[0][0];
 $data = $stmt->fetchAll();
  //var_dump($data);
  //print_r($data);
@@ -24,6 +28,7 @@ if ($executeIsOk == true) {
   <div class="card-deck h-40 m-4">
     <!-- <div class="card h-60"> -->
 <?php
+
 foreach ($data as $row) {
     // affichage
     //echo "</br>" . $row['id'];
@@ -49,7 +54,7 @@ foreach ($data as $row) {
                   <div class="card-img-overlay">
                     <h4 class="card-title text-center pt-5"><?php echo $row['titre']?></h4>
                     <p class="card-text text-center"></p>
-                    <a href="projet.php?id=<?php echo $row['id'] ?>" class="stretched-link"></a>
+                    <a href="projet.php?id=<?php echo $row['id']?>&page=<?php echo $nbprojets[0][0] ?>" class="stretched-link"></a>
 
                   </div>
                 </div>
@@ -57,10 +62,10 @@ foreach ($data as $row) {
               }
           }
           $result[$tag][] = $buffer;
-          
+
         }
     }
-  }
+}
 ?>
   </div>
 </div>

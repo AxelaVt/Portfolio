@@ -4,7 +4,7 @@ require ('connection.php');
 ?>
 
 <?php
-//récup de données dans la base
+//récup de données dans la base about
 $sql = "SELECT id, titre, texte FROM about ORDER BY id DESC LIMIT 1";
 $stmt = $conn->prepare($sql);
 // execute la requête
