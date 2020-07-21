@@ -85,7 +85,7 @@ if ($executeIsOk == true) {
     echo "la requête fonctionne";
   }
 
- //affichage dans le formulaire
+
  //affichage dans le formulaire
  foreach ($data as $row) {
      // affichage
@@ -102,19 +102,19 @@ if ($executeIsOk == true) {
         <form action="" method="post">  <!--enctype="multipart/form-data" -->
             <div class="form-group">
             <label for="titre">Titre:</label>
-            <textarea type="text" id="editor3" class="form-control" name="titre" value=""><?php echo  htmlspecialchars($row['titre']);?></textarea>
+            <textarea type="text" id="editor3" class="form-control" name="titre" value="<?php echo  htmlspecialchars($row['titre']);?>"><?php echo  htmlspecialchars($row['titre']);?></textarea>
             </div>
             <div class="form-group">
             <label for="descriptif">Description:</label>
-            <textarea type="text" id="editor4" class="form-control" rows="10" cols="50" name="descriptif" value=""><?php echo $row['descriptif'];?></textarea>
+            <textarea type="text" id="editor4" class="form-control" rows="10" cols="50" name="descriptif" value="<?php echo $row['descriptif'];?>"><?php echo $row['descriptif'];?></textarea>
             </div>
             <div class="form-group">
             <label for="image">Illustration</label>
-            <textarea type="text" id="editor5" class="form-control" rows="10" cols="50" name="image" value=""><?php echo $row['image'];?></textarea>
+            <textarea type="text" id="editor5" class="form-control" rows="10" cols="50" name="image" value="<?php echo $row['image'];?>"><?php echo $row['image'];?></textarea>
             </div>
             <div class="form-group">
             <label for="lien">Lien:</label>
-            <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien" value=""><?php echo $row['lien'];?></textarea>
+            <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien" value="<?php echo $row['lien'];?>"><?php echo $row['lien'];?></textarea>
             </div>
              <fieldset>
               <div class="form-check-inline mb-2">
@@ -171,7 +171,6 @@ if ($executeIsOk == true) {
 // if (!empty($_POST)){
 //   header('Location:admin.php');
 // }
-
 
  ?>
 </div>

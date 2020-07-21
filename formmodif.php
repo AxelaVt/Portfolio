@@ -1,8 +1,6 @@
 <?php
 include "header.php";
-
-
-
+//recup les données
 $id = $_GET['id'];
 $sql = "SELECT * FROM projets WHERE id = $id";
 $stmt = $conn->prepare($sql);
@@ -27,24 +25,24 @@ foreach ($data as $row) {
     // echo "</br>" . $row['actif'];
     // value.titre = $row['titre'];
     ?>
-    <h2> Projet <?php echo $row['id']?></h2>
+    <h2>Projet id: <?php echo $row['id']?></h2>
     <div class="container p-5 d-flex flex-column justify-content-center align-items-center">
        <form action="" method="post">  <!--enctype="multipart/form-data" -->
            <div class="form-group">
            <label for="titre">Titre:</label>
-           <textarea type="text" id="editor3" class="form-control" name="titre" value=""><?php echo  htmlspecialchars($row['titre']);?></textarea>
+           <textarea type="text" id="editor3" class="form-control" name="titre" value="<?php echo  htmlspecialchars($row['titre']);?>"><?php echo  htmlspecialchars($row['titre']);?></textarea>
            </div>
            <div class="form-group">
            <label for="descriptif">Description:</label>
-           <textarea type="text" id="editor4" class="form-control" rows="10" cols="50" name="descriptif" value=""><?php echo $row['descriptif'];?></textarea>
+           <textarea type="text" id="editor4" class="form-control" rows="10" cols="50" name="descriptif" value="<?php echo htmlspecialchars($row['descriptif']);?>"><?php echo htmlspecialchars($row['descriptif']);?></textarea>
            </div>
            <div class="form-group">
            <label for="image">Illustration</label>
-           <textarea type="text" id="editor5" class="form-control" rows="10" cols="50" name="image" value=""><?php echo $row['image'];?></textarea>
+           <textarea type="text" id="editor5" class="form-control" rows="10" cols="50" name="image" value="<?php echo $row['image'];?>"><?php echo $row['image'];?></textarea>
            </div>
            <div class="form-group">
            <label for="lien">Lien:</label>
-           <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien" value=""><?php echo $row['lien'];?></textarea>
+           <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien" value="<?php echo htmlspecialchars($row['lien']);?>"><?php echo htmlspecialchars($row['lien']);?></textarea>
            </div>
             <fieldset>
              <div class="form-check-inline mb-2">
@@ -59,7 +57,7 @@ foreach ($data as $row) {
               </div>
             </fieldset>
         <!-- <input type="file" name="img/" value=""> -->
-        <button type="submit" class="btn btn-primary" name="Enregistrer" value="Enregistrer">Enregistrer</button>
+        <button type="submit" class="btn btn-primary" name="enregistrer">Enregistrer</button>
         <button type="button" value="Annuler" onclick="history.back()" class="btn btn-primary">Annuler</button>
       </form>
     </div>
@@ -69,36 +67,47 @@ foreach ($data as $row) {
 
 //update dans la bdd
 
-if (!empty($_POST['Enregistrer']) && !empty($_POST['titre']) && !empty($_POST['descriptif']) && !empty($_POST['image']) && !empty($_POST['lien']) && !empty($_POST['actif'])) {
-  var_dump($_POST['Enregistrer']);
-  var_dump($_POST['titre']);
-  var_dump($_POST['image']);
-  var_dump($_POST['lien']);
-  var_dump($_POST['actif']);
+if (!empty($_POST['enregistrer'])){
 
-  try {
-    $stmt = $conn->prepare('UPDATE projets SET(titre = :titre, descriptif = :descriptif, image = :image, lien = :lien , actif = :actif) WHERE id = $row["id"]');
+   if(empty($_POST['titre']) && empty($_POST['descriptif']) && empty($_POST['image']) && !empty($_POST['lien']) && empty($_POST['actif'])) {
+     $error[] = 'veuillez renseigner tous les champs';
+    // var_dump($_POST['Enregistrer']);
+    // var_dump($_POST['titre']);
+    // var_dump($_POST['image']);
+    // var_dump($_POST['lien']);
+    // var_dump($_POST['actif']);
 
-    $executeIsOk = $stmt->execute(array(
-    ':titre' => $_POST['titre'],
-    ':descriptif' => $_POST['descriptif'],
-    ':image' => $_POST['image'],
-    ':lien' => $_POST['lien'],
-    ':actif' => $_POST['actif']
-    ));
+    if (!isset($error)){
+      try {
+        // $stmt = $conn->prepare('INSERT INTO projets SET(titre :titre, descriptif = :descriptif, image = :image, lien = :lien , actif = :actif) WHERE id = $id');
+        // $executeIsOk = $stmt->execute(array(
+        // ':titre' => $_POST['titre'],
+        // ':descriptif' => $_POST['descriptif'],
+        // ':image' => $_POST['image'],
+        // ':lien' => $_POST['lien'],
+        // ':actif' => $_POST['actif'],
+        // ':id' => $id
+        // ));
+        $stmt = $conn->prepare('INSERT INTO projets (titre, descriptif, image, lien, actif) VALUES (:titre, :descriptif, :image, :lien , :actif) WHERE id = $id');
+        $stmt->execute();
 
-    if ($executeIsOk == true) {
-      echo "la requête update fonctionne";
+        if ($executeIsOk == true) {
+          echo "la requête update fonctionne";
+        }
+        header('Location:admin.php');
+        exit;
+
+      } catch (\Exception $e) {
+        echo $e->getMessage();
+      }
+      if (isset($error)) {
+        foreach ($error as $error) {
+          echo '<div style="color: red; font-weight: bold; text-align: center;">'.$error.'</div>';
+        }
+      }
     }
-
-  } catch (\Exception $e) {
-    echo $e->getMessage();
   }
 }
-// if (!empty($_POST)){
-//   header('Location:admin.php');
-// }
-
 
 ?>
 </div>

@@ -48,6 +48,9 @@ require ('requetes.php');
             <td><?php echo $row['id']?></td>
             <td><?php echo $row['titre']?></td>
             <td><?php echo $row['texte']?></td>
+            <td><a href="apropos.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/eye.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
+            <td><a href="formaproposmodif.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/pencil-square.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
+            <td><a href="deleteapropos.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/trash.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
           </tr>
         <?php } ?>
         </tbody>
@@ -58,7 +61,6 @@ require ('requetes.php');
         <h3>Projets</h3>
         <div class="container d-flex flex-column justify-content-center text-center">
         <a href="formprojet.php">nouveau projet</a>
-        <a href="formprojetmodif.php">modifier un projet</a>
         <h2>Projets</h2>
         <table class="table table-striped">
           <thead>

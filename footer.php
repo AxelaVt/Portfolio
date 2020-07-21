@@ -7,9 +7,9 @@
     <p class="float-left"></p>
   </div>
 
-  <div class="col-lg-4 pb-2 modif">
+  <div class="col-lg-4 modif">
     <!-- lien pour modifier -->
-    <a class="float-sm-right" href="admin.php">admin</a>
+    <a class="float-sm-right" href="identification.php">se connecter</a>
   </div>
 </div>
 

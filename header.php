@@ -1,3 +1,9 @@
+
+<?php
+include_once ('connection.php');
+//include_once ('session.php');
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -13,9 +19,7 @@
 	  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 			<script type="text/javascript" src="js/js.js"></script>
 	    <script type="text/javascript" src="js/anime.min.js"></script>
-			<?php
-			require ('connection.php');
-			 ?>
+
 </head>
 
 	</head>

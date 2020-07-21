@@ -1,5 +1,4 @@
 <!-- ajout d'un nouveau projet -->
- <!-- && !empty($_POST['image']) && !empty($_POST['lien']) -->
 <?php
 include "header.php";
 
@@ -37,40 +36,41 @@ include "header.php";
         </fieldset>
 
     <!-- <input type="file" name="img/" value=""> -->
-    <button type="submit" class="btn btn-primary" name="Envoyer">Enregistrer</button>
+    <button type="submit" class="btn btn-primary" name="Enregistrer">Enregistrer</button>
     <button type="button" value="Annuler" onclick="history.back()" class="btn btn-primary">Annuler</button>
   </form>
 </div>
 
 <?php
 //stocke en bdd les données saisies
-if (!empty($_POST['titre']) && !empty($_POST['descriptif']) && !empty($_POST['image']) && !empty($_POST['lien']) && !empty($_POST['actif'])) {
-  try {
-    $stmt = $conn->prepare('INSERT INTO projets(titre, descriptif, image, lien, actif) VALUES (:titre, :descriptif, :image, :lien, :actif)');
-    $executeIsOk = $stmt->execute(array(
-    ':titre' => $_POST['titre'],
-    ':descriptif' => $_POST['descriptif'],
-    ':image' => $_POST['image'],
-    ':lien' => $_POST['lien'],
-    ':actif' => $_POST['actif']
-    ));
+if(isset($_POST['Enregistrer'])){
 
-    if ($executeIsOk == true) {
-      echo "la requête fonctionne";
+  if(!empty($_POST['titre']) && !empty($_POST['descriptif']) && !empty($_POST['image']) && !empty($_POST['lien']) && !empty($_POST['actif'])) {
+    try {
+      $stmt = $conn->prepare('INSERT INTO projets(titre, descriptif, image, lien, actif) VALUES (:titre, :descriptif, :image, :lien, :actif)');
+      $executeIsOk = $stmt->execute(array(
+      ':titre' => $_POST['titre'],
+      ':descriptif' => $_POST['descriptif'],
+      ':image' => $_POST['image'],
+      ':lien' => $_POST['lien'],
+      ':actif' => $_POST['actif']
+      ));
+
+      if ($executeIsOk == true) {
+        echo "la requête fonctionne";
+      }
+
+    } catch (\Exception $e) {
+      echo $e->getMessage();
     }
-
-  } catch (\Exception $e) {
-    echo $e->getMessage();
   }
-}
-else {
-  echo "Compléter les champs !";
-}
+  else {
+    echo "Compléter les champs !";
+  }
 
-if (!empty($_POST)){
   header('Location:projets.php');
-}
 
+}
 ?>
 <script>CKEDITOR.replace( 'editor3' );</script>
 <script>CKEDITOR.replace( 'editor4' );</script>
