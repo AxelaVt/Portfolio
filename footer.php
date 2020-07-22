@@ -9,7 +9,7 @@
 
   <div class="col-lg-4 modif">
     <!-- lien pour modifier -->
-    <a class="float-sm-right" href="identification.php">se connecter</a>
+    <a class="float-sm-right p-2" href="identification.php"><img src="bootstrap-icons/key-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
   </div>
 </div>
 

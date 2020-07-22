@@ -1,19 +1,32 @@
 
 <?php
-include "header.php";
+include_once "header.php";
 require ('requetes.php');
 ?>
-<div class="container admin h-90">
 
+<div class="container admin h-90">
+<?php
+if($_SESSION['username'] !== ""){
+    $user = $_SESSION['username'];
+    // afficher un message
+    ?> <div class="row h-10 p-3">
+      <?php echo "Bonjour $user, ";?>
+    </div><?php
+}
+
+if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
+  session_unset();
+  header("location:menu.php");
+}
+
+?>
   <h1>ADMIN</h1>
-  <button type="button" value="quitter" class="btn btn-primary float-sm-right">Quitter</button>
-  <?php
-  if (!empty($_POST["quitter"])) {
-    header('Location:portfolio.php');
-  }
-   ?>
-  <ul class="nav nav-pills" role="tablist">
-    <li class="nav-link active"><a data-toggle="tab" href="#admin">admin</a></li>
+
+    <a href='admin.php?deconnexion=true' type="button" class="btn btn-primary btn-lg float-sm-right">Quitter</a>
+
+
+  <ul class="nav nav-pills m-4" role="tablist">
+    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#admin">admin</a></li>
     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#apropos">a propos</a></li>
     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#projets">Projets</a></li>
     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#articles">Articles</a></li>
@@ -22,12 +35,16 @@ require ('requetes.php');
 
   <div class="tab-content">
     <div id="admin" class="container tab-pane active p-2">
-      <h3 class="mt-2">admin</h3>
+      <h3>admin</h3>
+
 
     </div>
+    <!-- a propos -->
     <div id="apropos" class="container tab-pane fade">
-      <h3>apropos</h3>
-      <a href="formapropos.php">modifier page about</a>
+      <h3>Page de présentation</h3>
+      <a role="button" class="btn btn-outline-primary btn-lg" href="formapropos.php">Nouvelle entrée</a>
+      <div class="container d-flex flex-column justify-content-center text-center">
+      <h2>Liste des enregistrements</h2>
       <table class="table table-striped">
         <thead>
           <tr>
@@ -55,12 +72,13 @@ require ('requetes.php');
         <?php } ?>
         </tbody>
       </table>
+      </div>
     </div>
-
+    <!-- projets -->
     <div id="projets" class="container tab-pane fade">
-        <h3>Projets</h3>
+        <h3>Page de gestion des projets</h3>
+        <a role="button" class="btn btn-outline-primary btn-lg" href="formprojet.php">nouveau projet</a>
         <div class="container d-flex flex-column justify-content-center text-center">
-        <a href="formprojet.php">nouveau projet</a>
         <h2>Projets</h2>
         <table class="table table-striped">
           <thead>
@@ -97,18 +115,20 @@ require ('requetes.php');
         </table>
       </div>
     </div>
+    <!-- articles -->
     <div id="articles" class="container tab-pane fade">
-          <h3>Articles</h3>
-          <div class="container d-flex flex-column justify-content-center text-center">
-          <!-- <a href="formprojet.php">nouveau projet</a>
-          <a href="formprojetmodif.php">modifier un projet</a> -->
-          <h2>Projets</h2>
+      <h3>Page de gestion des articles</h3>
+      <a role="button" class="btn btn-outline-primary btn-lg" href="formarticle.php">nouvel article</a>
+
+      <div class="container d-flex flex-column justify-content-center text-center">
+          <h2>Articles</h2>
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>id</th>
                 <th>titre</th>
                 <th>texte</th>
+                <th>image</th>
                 <th>actif</th>
               </tr>
             </thead>
@@ -126,20 +146,23 @@ require ('requetes.php');
               <tr>
                 <td><?php echo $row['id']?></td>
                 <td><?php echo $row['titre']?></td>
-                <td><?php echo $row['descriptif']?></td>
+                <td><?php echo $row['texte']?></td>
+                <td><?php echo $row['image']?></td>
                 <td><?php echo $row['actif']?></td>
+                <td><a href="article.php?id=<?php echo $row['id']?>&page=<?php echo $nbpage?>"><img src="bootstrap-icons/eye.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
+                <td><a href="formmodifarticle.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/pencil-square.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
+                <td><a href="deletearticle.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/trash.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
               </tr>
             <?php } ?>
             </tbody>
           </table>
         </div>
     </div>
+    <!-- contact -->
     <div id="contacts" class="container tab-pane fade">
           <h3>Contacts</h3>
           <div class="container d-flex flex-column justify-content-center text-center">
-          <a href="formprojet.php">nouveau projet</a>
-          <a href="formprojetmodif.php">modifier un projet</a>
-          <h2>Projets</h2>
+          <h2>Messages</h2>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -152,7 +175,7 @@ require ('requetes.php');
             </thead>
             <tbody class="h-60">
               <?php
-              foreach ($data4 as $row) {
+              foreach ($contacts as $row) {
                   // affichage
                   // echo "</br>" . $row['id'];
                   // echo "</br>" . $row['nom'];
@@ -167,6 +190,8 @@ require ('requetes.php');
                 <td><?php echo $row['prenom']?></td>
                 <td><?php echo $row['email']?></td>
                 <td><?php echo $row['message']?></td>
+                <td><a href="contact.php?id=<?php echo $row['id']?>&page=<?php echo $nbpage?>"><img src="bootstrap-icons/eye.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
+                <td><a href="deletemessage.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/trash.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
               </tr>
             <?php } ?>
             </tbody>

@@ -2,10 +2,10 @@
 include_once ('header.php');
 ?>
 
-  <div id="container w-80 h-100">
+  <div id="container" class="container justify-content-center">
       <!-- zone de connexion -->
-    <div class="d-flex flex-row m-5 col-lg-6 col-sm-12 justify-content-center">
-      <form action="verification.php" method="POST">
+    <div class="d-flex flex-row m-0 col-lg-6 col-sm-12">
+      <form class="w-100 p-5" action="session.php" method="POST">
           <h1>Connexion</h1>
           <div class="form-group">
           <label><b>Nom d'utilisateur</b></label>

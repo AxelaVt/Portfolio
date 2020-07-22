@@ -21,11 +21,23 @@ a.float-sm-right{
 /* admin */
 
 div.container.admin{
-  
   background-color: #f9f2f2;
   font-size: 1.5rem;
-  color:black;
+
 }
+
+a.nav-link,
+a.nav-link.active {
+  color:black;
+  text-decoration: none;
+}
+
+h3,
+h2 {
+  padding: 3%;
+}
+
+
 
 /* menu */
 .bl-main {
@@ -40,6 +52,7 @@ div.container.admin{
 	width: 50vw;
 	height: 50vh;
 }
+
 
 
 /* about */
@@ -147,7 +160,7 @@ div.container.admin{
   font-family: "Risque";
 }
 
-a{
+a.link{
   color: white;
   text-decoration: none;
 }
@@ -238,10 +251,62 @@ max-height: 100vh;
 
 /* modif des projets */
 
-td{
+td {
   overflow: hidden;
 }
 
-tr{
+tr {
   height: 10vh;
+}
+
+/* identification */
+
+body {
+    background: #FFEFD5;
+}
+#container {
+    width:100vw;
+}
+
+form {
+    /* border: 1px solid #f1f1f1; */
+    background: #fff;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+#container h1{
+    width: 38%;
+    margin: 0 auto;
+    padding-bottom: 10px;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+input[type=submit] {
+    background-color: #FFB6C1;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+input[type=submit]:hover {
+    background-color: white;
+    color: #FFB6C1;
+    border: 1px solid #FFB6C1;
+}
+
+/* page contact */
+
+#contact-form > form-group{
+  width: 60vw;
 }
