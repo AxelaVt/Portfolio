@@ -4,59 +4,41 @@ include "header.php";
 
 if(isset($_POST['submit'])){
 
-  if (empty($_POST['name'])) {
+  if (empty(htmlspecialchars($_POST['name']))) {
     $error[] = "veuillez remplir le champs nom";
+    $string_exp = "/^[A-Za-z0-9 .'-]+$/";
+    if(!preg_match($string_exp,(htmlspecialchars($_POST['name'])))) {
+      $error = "Le nom renseigné ne semble pas valide";
+    }
   }
-  if (empty($_POST['firstname'])) {
+  if (empty(htmlspecialchars($_POST['firstname']))) {
     $error[] = "veuillez remplir le champs prénom";
+    $string_exp = "/^[A-Za-z0-9 .'-]+$/";
+    if(!preg_match($string_exp,(htmlspecialchars($_POST['firstname'])))) {
+      $error = "Le prénom renseigné ne semble pas valide";
+    }
   }
-  if (empty($_POST['email'])) {
+  if (empty(htmlspecialchars($_POST['email']))) {
     $error[] = "veuillez remplir le champs email";
+    $email_exp = '/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/';
+     if(!preg_match($email_exp,$_POST['email'])) {
+      $error[] = "adresse e-mail non valide.";
+    }
   }
-  if (empty($_POST['subjet'])) {
+  if (empty(htmlspecialchars($_POST['subjet']))) {
     $error[] = "veuillez remplir le champs sujet";
   }
-  if (empty($_POST['message'])) {
+  if (empty(htmlspecialchars($_POST['message']))) {
     $error[] = "veuillez remplir le champs message";
   }
 
-  //stocke en bdd les données saisies
-  if (!isset($error)){
-    try {
-      $stmt = $conn->prepare('INSERT INTO contacts (id, name, firstname, email) VALUES (:id, :name, :firstname, :email)');
-      $executeIsOk = $stmt->execute(array(
-        ':id' => $_POST['id'],
-        ':name' => $_POST['name'],
-        ':firstname' => $_POST['firstname'],
-        ':email' => $_POST['email']
-      ));
-      if ($executeIsOk == true) {
-      echo "la requête fonctionne";
-      }
-
-      $stmt2 = $conn->prepare('INSERT INTO messages (id, name, subject, message) VALUES (:id, :name, :subject, :message)');
-      $executeIsOk = $stmt->execute(array(
-        ':id' => $_POST['id'],
-        ':name' => $_POST['name'],
-        ':subject' => $_POST['subject'],
-        ':message' => $_POST['message']
-      ));
-      if ($executeIsOk == true) {
-      echo "la requête fonctionne";
-      }
-
-      header('Location:contact.php');
-      exit;
-
-    } catch (\Exception $e) {
-      echo $e->getMessage();
-    }
-  }
   if (isset($error)) {
     foreach ($error as $error) {
+      echo 'Certains champs semblent comporter des erreurs, merci de corriger:';
       echo '<div style="color: red; font-weight: bold; text-align: center;">'.$error.'</div>';
     }
   }
+  echo "envoi du mail ok";
 }
 ?>
 
@@ -80,7 +62,7 @@ if(isset($_POST['submit'])){
          </div>
        </div>
        <div class="container p-0 m-0">
-         <form  class="h-60 p-2" id="contact-form" action="#" method="POST">
+         <form  class="h-60 p-2" id="contact-form" action="mail.php" method="POST">
              <div class="form-group">
                  <label class="form-label" for="name">Nom</label>
                  <input type="text" class="form-control" id="name" name="name" placeholder="Nom" required>

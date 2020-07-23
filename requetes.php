@@ -38,25 +38,5 @@ $nbprojets = $stmtnb->fetchAll();
 $nbpage = $nbprojets[0][0];
 
 
-//recup les données des bdd contact & message
-$sql = "SELECT id, name, firstname, email FROM contacts ORDER BY id DESC";
-$stmt = $conn->prepare($sql);
-$executeIsOk = $stmt->execute();
-$contacts = $stmt->fetchAll();
- //var_dump($contact);
-
-if ($executeIsOk == true) {
-  echo "la requête fonctionne";
-}
-
-$sql = "SELECT id, name, date, subject, message FROM messages ORDER BY name DESC";
-$stmt = $conn->prepare($sql);
-$executeIsOk = $stmt->execute();
-$messages = $stmt->fetchAll();
- //var_dump($contact);
-
- if ($executeIsOk == true) {
-   echo "la requête fonctionne";
- }
 
 ?>

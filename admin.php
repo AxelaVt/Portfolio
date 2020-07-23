@@ -159,7 +159,7 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
         </div>
     </div>
     <!-- contact -->
-    <div id="contacts" class="container tab-pane fade">
+    <!-- <div id="contacts" class="container tab-pane fade">
           <h3>Contacts</h3>
           <div class="container d-flex flex-column justify-content-center text-center">
           <h2>Messages</h2>
@@ -175,7 +175,7 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
             </thead>
             <tbody class="h-60">
               <?php
-              foreach ($contacts as $row) {
+              // foreach ($contacts as $row) {
                   // affichage
                   // echo "</br>" . $row['id'];
                   // echo "</br>" . $row['nom'];
@@ -185,11 +185,11 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
 
                   ?>
               <tr>
-                <td><?php echo $row['id']?></td>
-                <td><?php echo $row['nom']?></td>
-                <td><?php echo $row['prenom']?></td>
-                <td><?php echo $row['email']?></td>
-                <td><?php echo $row['message']?></td>
+                <td><?php //echo $row['id']?></td>
+                <td><?php //echo $row['nom']?></td>
+                <td><?php //echo $row['prenom']?></td>
+                <td><?php //echo $row['email']?></td>
+                <td><?php //echo $row['message']?></td>
                 <td><a href="contact.php?id=<?php echo $row['id']?>&page=<?php echo $nbpage?>"><img src="bootstrap-icons/eye.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
                 <td><a href="deletemessage.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/trash.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
               </tr>
@@ -197,7 +197,7 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
             </tbody>
           </table>
         </div>
-    </div>
+    </div> -->
 
   </div>
 
