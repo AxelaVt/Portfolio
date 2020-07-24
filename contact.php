@@ -3,7 +3,6 @@
 include "header.php";
 
 if(isset($_POST['submit'])){
-
   if (empty(htmlspecialchars($_POST['name']))) {
     $error[] = "veuillez remplir le champs nom";
     $string_exp = "/^[A-Za-z0-9 .'-]+$/";
@@ -32,19 +31,24 @@ if(isset($_POST['submit'])){
     $error[] = "veuillez remplir le champs message";
   }
 
-  if (isset($error)) {
-    foreach ($error as $error) {
-      echo 'Certains champs semblent comporter des erreurs, merci de corriger:';
-      echo '<div style="color: red; font-weight: bold; text-align: center;">'.$error.'</div>';
-    }
-  }
-  echo "envoi du mail ok";
 }
-?>
+if (isset($error)) {
+  foreach ($error as $error) {
+    echo 'Certains champs semblent comporter des erreurs, merci de corriger:';
+    echo '<div style="color: red; font-weight: bold; text-align: center;">'.$error.'</div>';
+  }
+}
+
+if (isset ($_GET['message'])) {
+echo "message envoyé";
+}else{
+echo "message non envoyé";
+}
 
 ?>
+
  <div class="container-fluid h-100">
-   <input style="display:none" onClick="window.close()"/><a href="portefolio.php"><img class="float-sm-right p-1" src="bootstrap-icons/x-circle-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
+   <input style="display:none" onClick="window.close()"/><a href="menu.php"><img class="float-sm-right p-1" src="bootstrap-icons/x-circle-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
    <div class="row h-5">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
     <h2 class="p-0">Contact</h2>

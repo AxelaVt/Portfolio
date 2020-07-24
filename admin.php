@@ -6,6 +6,15 @@ require ('requetes.php');
 
 <div class="container admin h-90">
 <?php
+
+//var_dump($_SESSION);
+if ($_SESSION['admin'] !== true ) {
+  echo "devez vous connecter";
+  //sleep(10);
+  header("location:identification.php");
+
+}
+
 if($_SESSION['username'] !== ""){
     $user = $_SESSION['username'];
     // afficher un message
@@ -14,8 +23,10 @@ if($_SESSION['username'] !== ""){
     </div><?php
 }
 
+
 if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
   session_unset();
+  session_destroy();
   header("location:menu.php");
 }
 
@@ -30,7 +41,6 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#apropos">a propos</a></li>
     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#projets">Projets</a></li>
     <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#articles">Articles</a></li>
-    <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#contacts">Contacts</a></li>
   </ul>
 
   <div class="tab-content">
@@ -107,8 +117,8 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
               <td><?php echo $row['descriptif']?></td>
               <td><?php echo $row['actif']?></td>
               <td><a href="projet.php?id=<?php echo $row['id']?>&page=<?php echo $nbpage?>"><img src="bootstrap-icons/eye.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
-              <td><a href="formmodif.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/pencil-square.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
-              <td><a href="delete.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/trash.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
+              <td><a href="formprojetmodif.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/pencil-square.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
+              <td><a href="deleteprojet.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/trash.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
             </tr>
           <?php } ?>
           </tbody>
@@ -158,49 +168,8 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
           </table>
         </div>
     </div>
-    <!-- contact -->
-    <!-- <div id="contacts" class="container tab-pane fade">
-          <h3>Contacts</h3>
-          <div class="container d-flex flex-column justify-content-center text-center">
-          <h2>Messages</h2>
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>id</th>
-                <th>nom</th>
-                <th>prenom</th>
-                <th>email</th>
-                <th>contact</th>
-              </tr>
-            </thead>
-            <tbody class="h-60">
-              <?php
-              // foreach ($contacts as $row) {
-                  // affichage
-                  // echo "</br>" . $row['id'];
-                  // echo "</br>" . $row['nom'];
-                  // echo "</br>" . $row['premon'];
-                  // echo "</br>" . $row['email'];
-                  // echo "</br>" . $row['message'];
-
-                  ?>
-              <tr>
-                <td><?php //echo $row['id']?></td>
-                <td><?php //echo $row['nom']?></td>
-                <td><?php //echo $row['prenom']?></td>
-                <td><?php //echo $row['email']?></td>
-                <td><?php //echo $row['message']?></td>
-                <td><a href="contact.php?id=<?php echo $row['id']?>&page=<?php echo $nbpage?>"><img src="bootstrap-icons/eye.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
-                <td><a href="deletemessage.php?id=<?php echo $row['id']?>"><img src="bootstrap-icons/trash.svg" alt="close" width="32" height="32" title="Bootstrap"></a></td>
-              </tr>
-            <?php } ?>
-            </tbody>
-          </table>
-        </div>
-    </div> -->
-
   </div>
-
+</div>
 
 
 <?php

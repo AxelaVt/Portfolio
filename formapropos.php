@@ -38,25 +38,24 @@ if(isset($_POST['submit'])){
 }
 ?>
 
+<div class="container form h-80 justify-content-center align-items-center">
 
-<div class="container m-2 mx-0 ">
-  <form action="" method="post">
-    <div class="form-group">
-    <label for="titre">Titre:</label>
-    <textarea type="text" id="editor1" class="form-control" name="titre"></textarea>
-    </div>
-    <div class="form-group">
-    <label for="comment">Texte:</label>
-    <textarea type="text" id="editor2" class="form-control" rows="10" cols="50" name="comment"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary" name="submit">Enregistrer</button>
-    <button type="button" value="Annuler" onclick="history.back()" class="btn btn-primary">Annuler</button>
-    <!-- <button type='reset' class="btn btn-secondary">Annuler</button> -->
-  </form>
+      <form action="" method="post" class="h-80 p-5">
+      <div class="form-group">
+      <label for="titre">Titre:</label>
+      <textarea type="text" id="" class="form-control" name="titre"></textarea>
+      </div>
+      <div class="form-group">
+      <label for="comment">Texte:</label>
+      <textarea type="text" id="" class="form-control" rows="10" cols="50" name="comment"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" name="submit">Enregistrer</button>
+      <!-- <button type="button" value="Annuler" onclick="history.back()" class="btn btn-primary">Annuler</button> -->
+      <button type='reset' class="btn btn-secondary">Annuler</button>
+      <a href="admin.php"><button type="button" class="btn btn-primary">admin</button></a>
+    </form>
+
 </div>
-
-<script>CKEDITOR.replace( 'editor1' );</script>
-<script>CKEDITOR.replace( 'editor2' );</script>
 
 <?php
 include "footeradmin.php";

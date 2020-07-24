@@ -37,6 +37,4 @@ $executeIsOk = $stmtnb->execute();
 $nbprojets = $stmtnb->fetchAll();
 $nbpage = $nbprojets[0][0];
 
-
-
 ?>

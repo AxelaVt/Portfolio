@@ -46,3 +46,4 @@ $(document).ready(function() {
     $( ".contact" ).mouseleave(function() {
       $('.contact > div > img').css('width', '20%');
     });
+})

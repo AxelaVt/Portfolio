@@ -233,7 +233,8 @@ window.onload = function() {
     var circles = [];
 
     var colorPicker = (function() {
-      var colors = ["#FF6138", "#FFBE53", "#2980B9", "#282741"];
+      //var colors = ["#FF6138", "#FFBE53", "#2980B9", "#282741"];
+      var colors = ["#FCE326", "#D30420", "#1AE936", "#0D04D9"];
       var index = 0;
       function next() {
         index = index++ < colors.length-1 ? index : 0;

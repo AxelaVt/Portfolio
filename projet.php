@@ -26,13 +26,12 @@ foreach ($data as $row) {
      // echo "</br>" . $row['titre'];
      // echo "</br>" . $row['image'];
      // echo "</br>" . $row['lien'];
-
 ?>
 
 <div class="container-fluid projet h-100 p-10">
-  <div class="row col-lg-12 w-auto m-0 p-0 border">
+  <div class="row col-lg-12 w-auto m-0 p-0">
     <div class="d-flex flex-column h-90 w-50">
-      <h2 class="d-flex h-20 p-2"><?php echo $row['titre']?></h2>
+      <h2 class="d-flex h-20 p-2 text-center"><?php echo $row['titre']?></h2>
       <div class="d-flex h-60 border p-5" id="description">
         <?php echo $row['descriptif']?>
       </div>
@@ -57,8 +56,7 @@ foreach ($data as $row) {
       </div>
     </div>
     <div class="d-flex w-50 p-2 justify-content-center align-items-center">
-      <?php echo $row['image']?>
-      <!-- <img class="image-projet w-auto h-50" src="img/<?php// echo $row['image']?>.png" alt="image"> -->
+      <img class="image-projet w-auto h-50" src="<?php echo $row['image']?>" alt="image">
     </div>
   </div>
 </div>

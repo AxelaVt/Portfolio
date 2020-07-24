@@ -5,6 +5,7 @@
     font-weight: bold;
     font-style: normal;
 }
+
 /* all */
 
 footer{
@@ -34,7 +35,7 @@ a.nav-link.active {
 
 h3,
 h2 {
-  padding: 3%;
+  padding: 2%;
 }
 
 
@@ -52,7 +53,6 @@ h2 {
 	width: 50vw;
 	height: 50vh;
 }
-
 
 
 /* about */
@@ -197,11 +197,13 @@ img.card-img-top{
   opacity:0.6;
 }
 
-.card{
+div.card{
   font-family: "Risque";
   font-weight: 600;
   font-size: 2rem;
+  min-width: 40vw;
 }
+
 
 img.card-img-top{
   width: 100%;
@@ -243,11 +245,13 @@ max-height: 100vh;
 }
 
 /* formulaire */
+/* formapropos */
 
-#editor1,
-#editor3{
-  height:20%;
+.container.form{
+  margin-top: 10vh;
 }
+
+
 
 /* modif des projets */
 

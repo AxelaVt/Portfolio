@@ -11,15 +11,12 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="js/js.js"></script>
     <script type="text/javascript" src="js/anime.min.js"></script>
-
   </head>
   <body>
-
     <div class="container-fluid p-0">
       <!-- <img class="" src="img/Peinture_1440x900-removebg-preview.jpg" alt="image"> -->
       <canvas id="c" ></canvas>
       <div class="d-flex flex-column w-100 h-100 justify-content-center flex-wrap align-content-center ">
-
         <div class="col-lg-10 col-sm-4 w-100 d-flex flex-column justify-content-end align-items-center">
         <h1 class="text-center align-middle">Alexa Vermenot</h1>
         <p class="text-right align-middle">Web developpement</p>
@@ -31,7 +28,6 @@
           </svg></a>
         </div>
         </div>
-
       </div>
     </div>
       <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

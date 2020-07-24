@@ -17,10 +17,10 @@ if(isset($_POST['username']) && isset($_POST['password'])){
               username = '".$username."' and password = '".$password."' ");
             $executeIsOk = $stmt->execute();
             $reponse = $stmt->fetchAll();
-            echo "stmt";
-            var_dump($stmt);
-            echo "reponse";
-            var_dump($reponse);
+            // echo "stmt";
+            // var_dump($stmt);
+            // echo "reponse";
+            // var_dump($reponse);
 
             if ($executeIsOk == true) {
             echo "la requête fonctionne";
@@ -32,6 +32,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             if($count!=0) // nom d'utilisateur et mot de passe correctes
             {
                $_SESSION['username'] = $username;
+               $_SESSION['admin'] = true;
                header('Location: admin.php');
             }
             else

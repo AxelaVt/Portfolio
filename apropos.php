@@ -21,7 +21,7 @@ if ($executeIsOk == true) {
 
 <div class="container-fluid apropos">
   <div class="jumbotron p-0">
-    <input style="display:none" onClick="window.close()"/><a href="portefolio.php"><img class="float-sm-right p-1" src="bootstrap-icons/x-circle-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
+    <input style="display:none" onClick="window.close()"/><a href="menu.php"><img class="float-sm-right p-1" src="bootstrap-icons/x-circle-fill.svg" alt="close" width="32" height="32" title="Bootstrap"></a>
     <div class="row h-40 p-4">
       <div class="column w-100">
         <div class="row h-20 align-items-center">

@@ -1,184 +1,123 @@
-
 <?php
-include "header.php";
+include_once "header.php";
 
-//récup de données dans la base
-$sql = "SELECT * FROM projets ORDER BY id DESC ";
-$stmt = $conn->prepare($sql);
-// execute la requête
-$executeIsOk = $stmt->execute();
+//recup les données
+$id = $_GET['id'];
 
-$data = $stmt->fetchAll();
- //var_dump($data);
+if (isset($_POST['submit'])){
+//var_dump($_POST['titre']);
 
-if ($executeIsOk == true) {
-  echo "la requête fonctionne";
+   if(empty($_POST['titre']) && empty($_POST['descriptif']) && empty($_POST['actif'])) {
+
+    $error[] = 'veuillez renseigner tous les champs';
+
+    }
+
+    $titre=$_POST['titre'];
+    $descriptif=$_POST['descriptif'];
+    $image=$_POST['image'];
+    $lien=$_POST['lien'];
+    $actif=$_POST['actif'];
+
+
+     if (!isset($error)){
+      try {
+        $id = $_GET['id'];
+
+        $stmt = $conn->prepare("UPDATE projets SET titre = :titre, descriptif = :descriptif, image = :image, lien = :lien , actif = :actif WHERE id = $id");
+        $stmt->execute(array(
+        ':titre' => $titre,
+        ':descriptif' => $descriptif,
+        ':image' => $image,
+        ':lien' => $lien,
+        ':actif' => $actif
+        ));
+
+
+        //header('Location: admin.php');
+      	//exit;
+      }
+      catch (\Exception $e) {
+        echo $e->getMessage();
+      }
+     }
+}
+if (isset($error)) {
+  foreach ($error as $error) {
+    echo '<div style="color: red; font-weight: bold; text-align: center;">'.$error.'</div>';
+  }
 }
 
-?>
-
-<div class="container">
-  <h2>Projets</h2>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>id</th>
-        <th>titre</th>
-        <th>descriptif</th>
-        <th>actif</th>
-      </tr>
-    </thead>
-    <tbody class="h-60">
-      <?php
-      foreach ($data as $row) {
-          // affichage
-          // echo "</br>" . $row['id'];
-          // echo "</br>" . $row['titre'];
-          // echo "</br>" . $row['descriptif'];
-          // echo "</br>" . $row['image'];
-          // echo "</br>" . $row['lien'];
-          // echo "</br>" . $row['actif'];
-          ?>
-      <tr>
-        <td><?php echo $row['id']?></td>
-        <td><?php echo $row['titre']?></td>
-        <td><?php echo $row['descriptif']?></td>
-        <td><?php echo $row['actif']?></td>
-      </tr>
-    <?php } ?>
-    </tbody>
-  </table>
-
-  <form action="" method="post">
-    <div class="form-group d-flex flex-column justify-content-center text-center">
-      <label for="id">projet sélectionné:</label>
-      <select class="form-control" id="id" name="listprojet">
-        <?php
-        foreach ($data as $row) {
-            // affichage
-            // echo "</br>" . $row['id'];
-            ?>
-        <option><?php echo $row['id']?></option>
-        <option value="0"></option>
-      <?php } ?>
-      </select>
-    </div>
-    <input type="submit" value="Valider"/>
-    <input type="submit" name="annuler" value="Annuler"/>
-    <?php if (!empty($_POST["annuler"])) {
-      header('Location:admin.php');
-    } ?>
-  </form>
-<!-- affiche le projet correspondant à la sélection listprojet -->
-  <?php
-  if (isset($_POST['listprojet'])) {
-  $selected = $_POST['listprojet'];
-  $sql = "SELECT * FROM projets WHERE id = $selected ";
+try {
+  $sql = "SELECT * FROM projets WHERE id = $id";
   $stmt = $conn->prepare($sql);
-  // execute la requête
   $executeIsOk = $stmt->execute();
-
   $data = $stmt->fetchAll();
-   //var_dump($data);
+  //var_dump($data);
 
-  if ($executeIsOk == true) {
-    echo "la requête fonctionne";
-  }
-
-
- //affichage dans le formulaire
- foreach ($data as $row) {
-     // affichage
-     // echo "</br>" . $row['id'];
-     // echo "</br>" . $row['titre'];
-     // echo "</br>" . $row['descriptif'];
-     // echo "</br>" . $row['image'];
-     // echo "</br>" . $row['lien'];
-     // echo "</br>" . $row['actif'];
-     // value.titre = $row['titre'];
-     ?>
-     <h2> Projet <?php echo $row['id']?></h2>
-     <div class="container p-5 d-flex flex-column justify-content-center align-items-center">
-        <form action="" method="post">  <!--enctype="multipart/form-data" -->
-            <div class="form-group">
-            <label for="titre">Titre:</label>
-            <textarea type="text" id="editor3" class="form-control" name="titre" value="<?php echo  htmlspecialchars($row['titre']);?>"><?php echo  htmlspecialchars($row['titre']);?></textarea>
-            </div>
-            <div class="form-group">
-            <label for="descriptif">Description:</label>
-            <textarea type="text" id="editor4" class="form-control" rows="10" cols="50" name="descriptif" value="<?php echo $row['descriptif'];?>"><?php echo $row['descriptif'];?></textarea>
-            </div>
-            <div class="form-group">
-            <label for="image">Illustration</label>
-            <textarea type="text" id="editor5" class="form-control" rows="10" cols="50" name="image" value="<?php echo $row['image'];?>"><?php echo $row['image'];?></textarea>
-            </div>
-            <div class="form-group">
-            <label for="lien">Lien:</label>
-            <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien" value="<?php echo $row['lien'];?>"><?php echo $row['lien'];?></textarea>
-            </div>
-             <fieldset>
-              <div class="form-check-inline mb-2">
-                 <label class="form-check-label">
-                   <input type="radio" class="form-check-input" name="actif" value="oui">Enregistrer et publier
-                 </label>
-               </div>
-               <div class="form-check-inline mb-2">
-                 <label class="form-check-label">
-                   <input type="radio" class="form-check-input" name="actif" value="non" checked="yes">enregistrer
-                 </label>
-               </div>
-             </fieldset>
-         <!-- <input type="file" name="img/" value=""> -->
-         <button type="submit" class="btn btn-primary" value="Enregistrer" name="Enregistrer">Enregistrer</button>
-         <button type="button" value="Annuler" onclick="history.back()" class="btn btn-primary">Annuler</button>
-       </form>
-     </div>
-     <?php
-   }
-
-  } else {
-    echo "selectionner un projet";
-  }
-
-  //update dans la bdd
-
-  if (!empty($_POST['Enregistrer']) && !empty($_POST['titre']) && !empty($_POST['descriptif']) && !empty($_POST['image']) && !empty($_POST['lien']) && !empty($_POST['actif'])) {
-    var_dump($_POST['Enregistrer']);
-    var_dump($_POST['titre']);
-    var_dump($_POST['image']);
-    var_dump($_POST['lien']);
-    var_dump($_POST['actif']);
-
-    try {
-      $stmt = $conn->prepare('UPDATE projets SET(titre = :titre, descriptif = :descriptif, image = :image, lien = :lien , actif = :actif) WHERE id = $row["id"]');
-
-      $executeIsOk = $stmt->execute(array(
-      ':titre' => $_POST['titre'],
-      ':descriptif' => $_POST['descriptif'],
-      ':image' => $_POST['image'],
-      ':lien' => $_POST['lien'],
-      ':actif' => $_POST['actif']
-      ));
-
-      if ($executeIsOk == true) {
-        echo "la requête update fonctionne";
-      }
-
-    } catch (\Exception $e) {
-      echo $e->getMessage();
+  if ($executeIsOk == true)
+   {
+    echo "la requête select fonctionne";
     }
-  }
-// if (!empty($_POST)){
-//   header('Location:admin.php');
-// }
+}
+catch(PDOException $e) {
+	echo $e->getMessage();
+}
 
- ?>
-</div>
+//affichage dans le formulaire
 
-<script>CKEDITOR.replace( 'editor3' );</script>
-<script>CKEDITOR.replace( 'editor4' );</script>
-<script>CKEDITOR.replace( 'editor5' );</script>
+foreach ($data as $row) {
+    // affichage
+    // echo "</br>" . $data['id'];
+    // echo "</br>" . $data['titre'];
+    // echo "</br>" . $data['descriptif'];
+    // echo "</br>" . $data['image'];
+    // echo "</br>" . $data['lien'];
+    // echo "</br>" . $data['actif'];
+    // value.titre = $data['titre'];
+    ?>
+    <h2>Projet id: <?php echo $row['id']?></h2>
+    <div class="container p-5 d-flex flex-column justify-content-center ">
+       <form action="formprojetmodif.php?id=<?php echo $row['id']?>" method="post" class="w-80 p-5">
+         <input type='hidden' name='id' value='<?php echo $row['id'];?>'>
+           <div class="form-group">
+           <label for="titre">Titre:</label>
+           <input type="text" id="" class="form-control" name="titre" value="<?php echo  htmlspecialchars($row['titre']);?>">
+           </div>
+           <div class="form-group">
+           <label for="descriptif">Description:</label>
+           <textarea type="text" id="" class="form-control" rows="10" cols="50" name="descriptif"><?php echo htmlspecialchars($row['descriptif']);?></textarea>
+           </div>
+           <div class="form-group">
+           <label for="image">Illustration</label>
+           <input type="text" id="" class="form-control" name="image" value="<?php echo $row['image'];?>">
+           </div>
+           <div class="form-group">
+           <label for="lien">Lien:</label>
+           <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien"><?php echo htmlspecialchars($row['lien']);?></textarea>
+           </div>
+          <fieldset>
+           <div class="form-check-inline mb-2">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="actif" value="oui">Enregistrer et publier
+              </label>
+            </div>
+            <div class="form-check-inline mb-2">
+              <label class="form-check-label">
+                <input type="radio" class="form-check-input" name="actif" value="non" checked="yes">enregistrer
+              </label>
+            </div>
+          </fieldset>
+        <!-- <input type="file" name="img/" value=""> -->
+        <button type="submit" class="btn btn-primary" name="submit">Enregistrer</button>
+        <button type="button" value="Annuler" onclick="history.back()" class="btn btn-primary">Annuler</button>
+        <button type='reset' class="btn btn-secondary">Annuler</button>
+        <a href="admin.php"><button type="button" class="btn btn-primary">admin</button></a>
+      </form>
+    </div>
+  <?php
+}
 
-<?php
-include "footeradmin.php";
+
+include_once "footeradmin.php";
 ?>
