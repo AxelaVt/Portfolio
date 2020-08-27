@@ -3,19 +3,19 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-        <!-- <meta name="theme-color" content="#FF6138"> -->
         <meta name="keywords" content="web, webdesign, développeur, informatique, graphisme, Nevers, acces code school, Projet, Alexa, Vermenot" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="style1.css" />
+				<script type="text/javascript" src="js/categorie.js"></script>
 <title>Alexa Vermenot - Menu</title>
 	</head>
 	<body>
-    <div class="loader"></div>
-		<div class="container">
+    <!-- <div class="loader"></div> -->
+		<div class="container p-0 m-0">
 			<div id="bl-main" class="bl-main">
 				<!-- page a propos -->
 				<section class="propos">
-					<div class="bl-box">
+					<div class="bl-box ">
 						<a class="link" href="apropos.php"><h2>A propos</h2></a>
             <img src="img/ete.jpg">
 					</div>

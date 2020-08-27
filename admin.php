@@ -97,7 +97,7 @@ if(isset($_GET['deconnexion']) && $_GET['deconnexion']==true){
               <th>titre</th>
               <th>descriptif</th>
               <th>actif</th>
-              <th>suppression</th>
+              <th></th>
             </tr>
           </thead>
           <tbody class="h-60">

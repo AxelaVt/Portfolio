@@ -7,11 +7,11 @@ include_once "header.php";
    <form action="" method="post" class="w-80 p-5" enctype="multipart/form-data">
        <div class="form-group">
        <label for="titre">Titre:</label>
-       <textarea type="text" id="" class="form-control" placeholder="Entrer le titre" name="titre" value=""></textarea>
+       <input type="text" id="" class="form-control" placeholder="Entrer le titre" name="titre">
        </div>
        <div class="form-group">
        <label for="descriptif">Description:</label>
-       <textarea type="text" id="" class="form-control" rows="10" cols="50" name="descriptif" value=""></textarea>
+       <textarea type="text" id="" class="form-control" rows="10" cols="50" name="descriptif"></textarea>
        </div>
        <div class="form-group">
        <label for="image">Illustration:</label>
@@ -23,7 +23,7 @@ include_once "header.php";
        </div>
        <div class="form-group">
        <label for="lien">Lien:</label>
-       <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien" value=""></textarea>
+       <textarea type="text" id="lien" class="form-control" rows="10" cols="50" name="lien"></textarea>
        </div>
       <fieldset required>
        <div class="form-check-inline mb-2">
@@ -52,29 +52,35 @@ include_once "header.php";
 //stocke en bdd les données saisies
 if(isset($_POST['Enregistrer'])){
 
+  
+
   if(!empty($_POST['titre']) && !empty($_POST['descriptif']) && !empty($_POST['actif'])) {
     try {
-      $stmt = $conn->prepare('INSERT INTO projets(titre, descriptif, image, lien, actif) VALUES(:titre, :descriptif, :image, :lien, :actif)');
-      var_dump($_FILES['image']['name']);
+      $stmt = $conn->prepare("INSERT INTO projets(titre, descriptif, image, lien, actif) VALUES(:titre, :descriptif, :image, :lien, :actif)");
+      //var_dump($_FILES['image']['name']);
 
       $filename = $_FILES['image']['name'];
       $target_files = 'img/imgprojets/'. $filename;
       $file_extension = pathinfo($target_files, PATHINFO_EXTENSION);
       $file_extension = strtolower($file_extension);
       $valid_extension = array('png','jpg','jpeg','svg');  //extension possible
-
       if (in_array($file_extension, $valid_extension)) {    // si l'extension du fichier est dans le tableau
         if (move_uploaded_file($_FILES['image']['tmp_name'],$target_files)) {
-          $stmt->execute(array(
+
+          $executeIsOk = $stmt->execute(array(
           ':titre' => $_POST['titre'],
           ':descriptif' => $_POST['descriptif'],
           ':image' => $target_files,
           ':lien' => $_POST['lien'],
           ':actif' => $_POST['actif']
           ));
+          if ($executeIsOk ==true){
+            echo "ca marche";
+          }
         }
       }
-      header('Location:admin.php');
+
+      //header('Location:admin.php');
 
     } catch (\Exception $e) {
       echo $e->getMessage();

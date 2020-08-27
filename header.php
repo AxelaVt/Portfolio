@@ -1,7 +1,8 @@
 
 <?php
-include_once ('connection.php');
 session_start();
+include_once ('connection.php');
+
 
  ?>
 
@@ -10,7 +11,6 @@ session_start();
 	<head>
 		<meta charset="UTF-8" />
       <!-- <meta name="theme-color" content="#FF6138"/> -->
-      <meta name="keywords" content="web, webdesign, développeur, informatique, graphisme, Nevers, acces code school, Projet, Alexa, Vermenot" />
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="style1.css" />
       <script src="https://cdn.ckeditor.com/4.14.1/full-all/ckeditor.js"></script>

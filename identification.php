@@ -2,11 +2,11 @@
 include_once ('header.php');
 ?>
 
-  <div id="container" class="container justify-content-center">
-      <!-- zone de connexion -->
-    <div class="d-flex flex-row m-0 col-lg-6 col-sm-12">
+  <div id="container" class="container h-100 m-0">
+      <!-- formulaire de connexion -->
+    <div class="d-flex col-lg-8 col-sm-12 align-self-center">
       <form class="w-100 p-5" action="session.php" method="POST">
-          <h1>Connexion</h1>
+          <h1 class="align-self-center mb-4">Connexion</h1>
           <div class="form-group">
           <label><b>Nom d'utilisateur</b></label>
           <input type="text" placeholder="Entrer le nom d'utilisateur" name="username" required>

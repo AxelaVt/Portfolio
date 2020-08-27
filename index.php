@@ -1,9 +1,8 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="web, webdesign, développeur, informatique, graphisme, Nevers, acces code school, Projet, Alexa, Vermenot" />
     <meta name="author" content="Alexa Vermenot">
     <title>Portefolio</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -21,11 +20,9 @@
         <h1 class="text-center align-middle">Alexa Vermenot</h1>
         <p class="text-right align-middle">Web developpement</p>
         <div class="col-lg-2 col-sm-4 w-100 d-flex flex-column justify-content-end align-items-center">
-          <a href="menu.php"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-arrow-right-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-            <path fill-rule="evenodd" d="M7.646 11.354a.5.5 0 0 1 0-.708L10.293 8 7.646 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0z"/>
-            <path fill-rule="evenodd" d="M4.5 8a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5z"/>
-          </svg></a>
+          <a href="menu.php">
+            <img src="img/fleche.gif" alt="ici">
+          </a>
         </div>
         </div>
       </div>
