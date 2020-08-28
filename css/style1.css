@@ -1,7 +1,7 @@
 
 @font-face {
     font-family: 'Risque';
-    src: url('fonts/Risque-Regular.ttf') format('truetype');
+    src: url('../fonts/Risque-Regular.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }

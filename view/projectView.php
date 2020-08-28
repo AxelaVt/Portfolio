@@ -2,31 +2,18 @@
 include "header.php";
 ?>
 
-<?php
-echo $_GET['id'];
-$id = $_GET['id'];
-//récup des données dans la base
-$sql = "SELECT * FROM projets WHERE id = $id ";
-$stmt = $conn->prepare($sql);
-// execute la requête
-$executeIsOk = $stmt->execute();
+<!-- <?php
 
-$data = $stmt->fetchAll();
- // var_dump($data);
-
-if ($executeIsOk == true) {
-  echo "la requête fonctionne";
-}
-
+//$id = $_GET['id'];
 // <!-- affichage des données -->
-foreach ($data as $row) {
+//foreach ($data as $row) {
     // affichage
      // echo "</br>" . $row['id'];
      // echo "</br>" . $row['descriptif'];
      // echo "</br>" . $row['titre'];
      // echo "</br>" . $row['image'];
      // echo "</br>" . $row['lien'];
-?>
+?> -->
 
 <div class="container-fluid projet h-100 p-10">
   <div class="row col-lg-12 w-auto m-0 p-0">
@@ -36,7 +23,7 @@ foreach ($data as $row) {
         <?php echo $row['descriptif']?>
       </div>
       <div class="d-flex h-10 p-2 ">
-        <a href="#<?php echo $row['lien']?>"><button type="button" class="btn btn-outline-light" name="lien">demo</button></a>
+        <a href="<?php echo $row['lien']?>"><button type="button" class="btn btn-outline-light" name="lien">demo</button></a>
       </div>
       <div class="d-flex h-10 p-2">
         <a href="projets.php"><button type="button" class="btn btn-outline-light">Retour à la liste des projets</button></a>
